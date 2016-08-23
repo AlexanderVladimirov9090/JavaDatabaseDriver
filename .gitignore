@@ -1,0 +1,38 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/sqlqueries/build/
+/.idea/
+/sqlqueries/gradle/
+/sqlqueries/gradlew.bat
+/sqlqueries/.gradle/
+/sqlqueries/gradlew
+/travel_agency/gradlew.bat
+/travel_agency/gradlew
+/travel_agency/.gradle/
+/travel_agency/gradle/
+/travel_agency/build/
+/travel_agency/PerosnScenario
+/article_history/.gradle/
+/article_history/gradlew.bat
+/article_history/gradlew
+/article_history/gradle/
+/article_history/
+/magazine/gradle/
+/magazine/.gradle/
+/magazine/gradlew
+/magazine/gradlew.bat
+/magazine/build/
+/user_registraion_center/gradle/
+/user_registraion_center/.gradle/
+/user_registraion_center/gradlew.bat
+/user_registraion_center/gradlew

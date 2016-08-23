@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/magazine.iml" filepath="$PROJECT_DIR$/.idea/modules/magazine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/magazine_main.iml" filepath="$PROJECT_DIR$/.idea/modules/magazine_main.iml" group="magazine" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/magazine_test.iml" filepath="$PROJECT_DIR$/.idea/modules/magazine_test.iml" group="magazine" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/myjdbcstuff.iml" filepath="$PROJECT_DIR$/.idea/myjdbcstuff.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sqlqueries.iml" filepath="$PROJECT_DIR$/.idea/modules/sqlqueries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sqlqueries_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sqlqueries_main.iml" group="sqlqueries" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sqlqueries_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sqlqueries_test.iml" group="sqlqueries" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/travel_agency.iml" filepath="$PROJECT_DIR$/.idea/modules/travel_agency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/travel_agency_main.iml" filepath="$PROJECT_DIR$/.idea/modules/travel_agency_main.iml" group="travel_agency" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/travel_agency_test.iml" filepath="$PROJECT_DIR$/.idea/modules/travel_agency_test.iml" group="travel_agency" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user_registraion_center.iml" filepath="$PROJECT_DIR$/.idea/modules/user_registraion_center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user_registraion_center_main.iml" filepath="$PROJECT_DIR$/.idea/modules/user_registraion_center_main.iml" group="user_registraion_center" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user_registraion_center_test.iml" filepath="$PROJECT_DIR$/.idea/modules/user_registraion_center_test.iml" group="user_registraion_center" />
+    </modules>
+  </component>
+</project>
