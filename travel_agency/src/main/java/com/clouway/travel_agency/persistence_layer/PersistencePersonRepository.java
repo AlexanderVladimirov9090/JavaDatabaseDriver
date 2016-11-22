@@ -54,22 +54,7 @@ public class PersistencePersonRepository implements PersonRepository {
     @Override
     public List<Person> peopleInSameCity(String city, Long date) {
      return    dataStore.fetchRows("SELECT * FROM People INNER JOIN Trip ON People.EGN=Trip.EGN WHERE Trip.City = ? AND Trip.DateOfArrival <= ? AND ? < Trip.DateOfDeparture"
-             , resultSet -> new Person(resultSet.getString(1),resultSet.getLong(2),resultSet.getInt(3),resultSet.getString(4)), city, date, date);/*
-        List list = Lists.newArrayList();
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM People INNER JOIN Trip ON People.EGN=Trip.EGN WHERE Trip.City = ? AND Trip.DateOfArrival <= ? AND ? < Trip.DateOfDeparture")) {
-            statement.setString(1, city);
-            statement.setDate(2, new Date(1290262492000L));
-            statement.setDate(3, new Date(1290262492000L));
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                Person person = new Person(resultSet.getString(1), resultSet.getLong(2), resultSet.getInt(3), resultSet.getString(4));
-                list.add(person);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("Connection to the database wasn't established");
-        }
-        return list;*/
+             , resultSet -> new Person(resultSet.getString(1),resultSet.getLong(2),resultSet.getInt(3),resultSet.getString(4)), city, date, date);
     }
 
     /**
