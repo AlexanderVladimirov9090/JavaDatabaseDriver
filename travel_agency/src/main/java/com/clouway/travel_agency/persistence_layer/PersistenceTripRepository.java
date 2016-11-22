@@ -35,27 +35,21 @@ public class PersistenceTripRepository implements TripRepository {
     /**
      * Registers trip to database.
      *
-     * @param egn             eng of person from database.
-     * @param dateOfArrival   date of arrival in to the city.
-     * @param dateOfDeparture date of departure of the city.
-     * @param city            destination of the trip.
+     * @param trip  new trip that is going to be register in database.
      */
     @Override
-    public void register(Long egn, Date dateOfArrival, Date dateOfDeparture, String city) {
-        dataStore.update("INSERT INTO Trip VALUES (?,?,?,?)", egn, dateOfArrival, dateOfDeparture, city);
+    public void register(Trip trip) {
+        dataStore.update("INSERT INTO Trip VALUES (?,?,?,?)", trip.egn, trip.dateOfArrival, trip.dateOfDeparture, trip.city);
     }
 
     /**
      * Updates existing trip in the Database by egn.
      *
-     * @param egn             egn of person in database used as foreign key.
-     * @param dateOfArrival   data of arrival to be changed.
-     * @param dateOfDeparture data of departure to be change.
-     * @param city            city to be change.
+     * @param trip is used to update existing trip in database.
      */
     @Override
-    public void updateTrip(Long egn, Date dateOfArrival, Date dateOfDeparture, String city) {
-        dataStore.update("UPDATE Trip SET  DateOfArrival= ?, DateOfDeparture = ?, City = ? WHERE EGN = ?", dateOfArrival, dateOfDeparture, city, egn);
+    public void updateTrip(Trip trip) {
+        dataStore.update("UPDATE Trip SET  DateOfArrival= ?, DateOfDeparture = ?, City = ? WHERE EGN = ?", trip.dateOfArrival, trip.dateOfDeparture, trip.city, trip.egn);
     }
 
     /**
