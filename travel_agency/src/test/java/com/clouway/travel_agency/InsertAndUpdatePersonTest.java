@@ -35,14 +35,14 @@ public class InsertAndUpdatePersonTest {
         dataStore.update("DROP TABLE IF EXISTS Trip");
         dataStore.update("TRUNCATE TABLE People");
 
-        personRepository.register("Gogo", 3333333333L, 13, "no0");
-        personRepository.register("Delete", 1111111111L, 44, "d");
+        personRepository.register(new Person("Gogo", 3333333333L, 13, "no0"));
+        personRepository.register(new Person("Delete", 1111111111L, 44, "d"));
     }
 
     @Test
     public void addPerson() {
         Person expected = new Person("Ivan", 1212121212L, 15, "food@email.com");
-        personRepository.register("Ivan", 1212121212L, 15, "food@email.com");
+        personRepository.register(new Person("Ivan", 1212121212L, 15, "food@email.com"));
         List actual = personRepository.getAll();
         Person actualPerson = (Person) actual.get(1);
         assertThat(actualPerson.equals(expected), is(true));
@@ -51,7 +51,7 @@ public class InsertAndUpdatePersonTest {
     @Test
     public void updatePerson() {
         Person updatedPerson = new Person("Zozo", 3333333333L, 99, "yes");
-        personRepository.updatePerson("Zozo", 3333333333L, 99, "yes");
+        personRepository.updatePerson(new Person("Zozo", 3333333333L, 99, "yes"));
         List actual = personRepository.peopleStartsWith("Zozo");
         Person actualPerson = (Person) actual.get(0);
         assertThat(actualPerson.equals(updatedPerson), is(true));

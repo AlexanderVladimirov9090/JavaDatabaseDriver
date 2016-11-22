@@ -13,10 +13,10 @@ import java.util.Objects;
  *         Only contains get method to show content pulled from database.
  */
 public class Trip {
-    private final Long egn;
-    private final Date dateOfArrival;
-    private final Date dateOfDeparture;
-    private final String city;
+    public final Long egn;
+    public final Date dateOfArrival;
+    public final Date dateOfDeparture;
+    public   final String city;
 
     public Trip(Long egn, java.sql.Date dateOfArrival, java.sql.Date dateOfDeparture, String city) {
         this.egn = egn;

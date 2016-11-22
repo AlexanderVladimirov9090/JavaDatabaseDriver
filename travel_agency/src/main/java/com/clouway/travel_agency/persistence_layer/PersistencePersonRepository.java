@@ -40,8 +40,8 @@ public class PersistencePersonRepository implements PersonRepository {
      */
     @Override
     public List<Person> peopleStartsWith(String startsWith) {
-       return dataStore.fetchRows("SELECT * FROM People WHERE Name LIKE ?",
-               resultSet -> new Person(resultSet.getString(1),resultSet.getLong(2),resultSet.getInt(3),resultSet.getString(4)),startsWith+"%");
+        return dataStore.fetchRows("SELECT * FROM People WHERE Name LIKE ?",
+                resultSet -> new Person(resultSet.getString(1), resultSet.getLong(2), resultSet.getInt(3), resultSet.getString(4)), startsWith + "%");
     }
 
     /**
@@ -53,6 +53,8 @@ public class PersistencePersonRepository implements PersonRepository {
      */
     @Override
     public List<Person> peopleInSameCity(String city, Long date) {
+     return    dataStore.fetchRows("SELECT * FROM People INNER JOIN Trip ON People.EGN=Trip.EGN WHERE Trip.City = ? AND Trip.DateOfArrival <= ? AND ? < Trip.DateOfDeparture"
+             , resultSet -> new Person(resultSet.getString(1),resultSet.getLong(2),resultSet.getInt(3),resultSet.getString(4)), city, date, date);/*
         List list = Lists.newArrayList();
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM People INNER JOIN Trip ON People.EGN=Trip.EGN WHERE Trip.City = ? AND Trip.DateOfArrival <= ? AND ? < Trip.DateOfDeparture")) {
             statement.setString(1, city);
@@ -67,33 +69,27 @@ public class PersistencePersonRepository implements PersonRepository {
             e.printStackTrace();
             throw new IllegalStateException("Connection to the database wasn't established");
         }
-        return list;
+        return list;*/
     }
 
     /**
      * Register person to database.
      *
-     * @param name  name of new person.
-     * @param egn   egn of new person.
-     * @param age   age of the new person.
-     * @param email email of new person
+     * @param person new person that is going to be register to database.
      */
     @Override
-    public void register(String name, Long egn, int age, String email) {
-        dataStore.update("INSERT INTO People VALUES (?,?,?,?)", name, egn, age, email);
+    public void register(Person person) {
+        dataStore.update("INSERT INTO People VALUES (?,?,?,?)", person.name, person.egn, person.age, person.email);
     }
 
     /**
      * Updates existing person from database.
      *
-     * @param name  new name of person.
-     * @param egn   by eng is been searched.
-     * @param age   new age of person.
-     * @param email new email of person
+     * @param person new person with changes for existing person in database.
      */
     @Override
-    public void updatePerson(String name, Long egn, int age, String email) {
-        dataStore.update("UPDATE People SET Name = ?, AGE = ?, Email = ? WHERE EGN = ?", name, age, email, egn);
+    public void updatePerson(Person person) {
+        dataStore.update("UPDATE People SET Name = ?, AGE = ?, Email = ? WHERE EGN = ?", person.name, person.age, person.email, person.egn);
     }
 
     /**

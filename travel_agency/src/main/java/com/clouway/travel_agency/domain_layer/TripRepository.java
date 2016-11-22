@@ -22,22 +22,16 @@ public interface TripRepository {
     /**
      * Registers trip to database.
      *
-     * @param egn             eng of person from database.
-     * @param dateOfArrival   date of arrival in to the city.
-     * @param dateOfDeparture date of departure of the city.
-     * @param city            destination of the trip.
+     * @param trip new trip to be register in database.
      */
-    void register(Long egn, Date dateOfArrival, Date dateOfDeparture, String city);
+    void register(Trip trip);
 
     /**
      * Updates existing trip from database.
      *
-     * @param egn             eng of person from database used as a foreign key.
-     * @param dateOfArrival   date of arrival in to the city.
-     * @param dateOfDeparture date of departure of the city.
-     * @param city            destination of the trip.
+     * @param trip new trip with changes for trip in the database.
      */
-    void updateTrip(Long egn, Date dateOfArrival, Date dateOfDeparture, String city);
+    void updateTrip(Trip trip);
 
     /**
      * Deletes trip from Database by egn.

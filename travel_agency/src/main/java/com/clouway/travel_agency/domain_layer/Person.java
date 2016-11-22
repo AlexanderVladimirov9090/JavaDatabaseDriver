@@ -10,10 +10,10 @@ import java.util.Objects;
  *         This object represents a record from Database.
  */
 public class Person {
-    private final String name;
-    private final Long egn;
-    private final int age;
-    private final String email;
+    public final String name;
+    public final Long egn;
+    public final int age;
+    public final String email;
 
     public Person(String name, Long egn, int age, String email) {
         this.name = name;

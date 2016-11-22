@@ -1,5 +1,6 @@
 package com.clouway.travel_agency;
 
+import com.clouway.travel_agency.domain_layer.Person;
 import com.clouway.travel_agency.domain_layer.PersonRepository;
 import com.clouway.travel_agency.domain_layer.Trip;
 import com.clouway.travel_agency.domain_layer.TripRepository;
@@ -40,18 +41,18 @@ public class InsertAndUpdateTripTest {
         dataStore.update("DROP TABLE IF EXISTS People");
         dataStore.update("CREATE TABLE People ( Name VARCHAR(255), EGN BIGINT NOT NULL, AGE INT NOT NULL, Email VARCHAR(255), PRIMARY KEY (EGN))");
         dataStore.update("CREATE TABLE Trip ( EGN BIGINT NOT NULL, DateOfArrival DATE NOT NULL, DateOfDeparture DATE NOT NULL, City VARCHAR(56), FOREIGN KEY (EGN) REFERENCES People(EGN))");
-        personRepository.register("Gosho", 9090909090L, 23, "email@email.com");
-        personRepository.register("Pesho", 9191919191L, 27, "gemail@gemail.com");
-        personRepository.register("Petur", 9292929292L, 28, "semail@semail.com");
-        tripRepository.register(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven");
-        tripRepository.register(9191919191L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven");
-        tripRepository.register(9292929292L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven");
+        personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
+        personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
+        personRepository.register(new Person("Petur", 9292929292L, 28, "semail@semail.com"));
+        tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
+        tripRepository.register(new Trip(9191919191L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
+        tripRepository.register(new Trip(9292929292L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
     }
 
     @Test
     public void happyPath() {
 
-        tripRepository.register(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven");
+        tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         tripRepository.deleteTripByEGN(9090909090L);
         List<Trip> trips = tripRepository.getAll();
         assertThat(trips.size(), is(equalTo(2)));
@@ -60,7 +61,7 @@ public class InsertAndUpdateTripTest {
     @Test
     public void updateTrip() {
         Trip expected = new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia");
-        tripRepository.updateTrip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia");
+        tripRepository.updateTrip(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia"));
         List<Trip> trips = tripRepository.getAll();
         Trip actual = trips.get(0);
         assertThat(actual.equals(expected), is(true));

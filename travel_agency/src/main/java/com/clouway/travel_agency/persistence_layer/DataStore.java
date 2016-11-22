@@ -47,16 +47,15 @@ public class DataStore<T> {
      */
     public List<T> fetchRows(String query, RowFetcher<T> rowFetcher, Object... objects) {
         List list = Lists.newArrayList();
-        try  {
+        try {
             PreparedStatement statement = dbConnection.prepareStatement(query);
-            fillStatement(statement,objects);
+            fillStatement(statement, objects);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Optional possibleRow = Optional.of(rowFetcher.fetchRow(resultSet));
                 list.add(possibleRow.get());
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new IllegalStateException("Connection to the database wasn't established");
         }
         return list;

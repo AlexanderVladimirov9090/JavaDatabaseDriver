@@ -37,21 +37,17 @@ public interface PersonRepository {
 
     /**
      * Register person to database.
-     * @param name name of new person.
-     * @param egn egn of new person.
-     * @param age age of the new person.
-     * @param email email of new person
+     *
+     * @param person that is going to be register.
      */
-    void register(String name, Long egn , int age, String email);
+    void register(Person person);
 
     /**
      * Updates existing person from database.
-     * @param name new name of person.
-     * @param egn by eng is been searched.
-     * @param age new age of person.
-     * @param email new email of person
+     *
+     * @param person new updated version of person that is going to be updated.
      */
-    void updatePerson(String name, Long egn , int age, String email);
+    void updatePerson(Person person);
 
     /**
      * Deletes person by EGN.
