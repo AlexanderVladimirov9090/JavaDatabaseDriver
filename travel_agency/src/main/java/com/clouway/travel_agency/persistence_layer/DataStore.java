@@ -34,7 +34,6 @@ public class DataStore<T> {
             fillStatement(statement, objects);
             statement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new IllegalStateException("Connection to the database wasn't established");
         }
     }
