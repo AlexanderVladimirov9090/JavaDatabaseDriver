@@ -10,8 +10,10 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -40,16 +42,26 @@ public class InsertAndUpdatePersonTest {
     @Test
     public void addPerson() {
         Person expectedFirst = new Person("Ivan", 1212121212L, 15, "food@email.com");
-        Person expectedSecond = new Person("NewPerson", 5656565656L, 15, "food@email.com");
         personRepository.register(new Person("Ivan", 1212121212L, 15, "food@email.com"));
-        personRepository.register(new Person("NewPerson", 5656565656L, 15, "food@email.com"));
-        List<Person> people = personRepository.getAll();
+        List<Person> expected = new LinkedList<>();
+        expected.add(expectedFirst);
+        List<Person> actual = personRepository.getAll();
 
-        Person actualFirst = people.get(0);
-        Person actualSecond = people.get(0);
+        assertThat(actual, is(equalTo(expected)));
+    }
 
-        assertThat(actualFirst.equals(expectedFirst), is(true));
-        assertThat(actualSecond.equals(expectedSecond), is(true));
+    @Test
+    public void addMoreThanOne() {
+        Person expectedFirst = new Person("Wut", 00000000000L, 56, "@email.com");
+        Person expectedSecond = new Person("Zimbabe", 9999999999L, 65, "food@.com");
+        personRepository.register(new Person("Wut", 00000000000L, 56, "@email.com"));
+        personRepository.register(new Person("Zimbabe", 9999999999L, 65, "food@.com"));
+        List<Person> expected = new LinkedList<>();
+        expected.add(expectedFirst);
+        expected.add(expectedSecond);
+        List<Person> actual = personRepository.getAll();
+
+        assertThat(actual, is(equalTo(expected)));
     }
 
     @Test

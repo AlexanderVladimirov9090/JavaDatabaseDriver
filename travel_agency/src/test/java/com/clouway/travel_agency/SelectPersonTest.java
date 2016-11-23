@@ -43,7 +43,7 @@ public class SelectPersonTest {
     }
 
     @Test
-    public void happyPath() throws ClassNotFoundException, SQLException {
+    public void happyPath(){
         Person expectedFirst = new Person("Gosho", 9090909090L, 23, "email@email.com");
         Person expectedSecond = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
         personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
@@ -58,7 +58,7 @@ public class SelectPersonTest {
     }
 
     @Test
-    public void peopleStartsWith() throws ClassNotFoundException, SQLException {
+    public void peopleStartsWith(){
         Person expectedFirst = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
         List actual = personRepository.peopleStartsWith("P");
         Person actualFirst = (Person) actual.get(0);
@@ -67,7 +67,7 @@ public class SelectPersonTest {
 
 
     @Test
-    public void bySameCity() {
+    public void bySameCity(){
         dataStore.update("CREATE TABLE Trip ( EGN BIGINT NOT NULL, DateOfArrival DATE NOT NULL, DateOfDeparture DATE NOT NULL, City VARCHAR(56), FOREIGN KEY (EGN) REFERENCES People(EGN))");
         tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
         tripRepository.register(new Trip(9191919191L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
