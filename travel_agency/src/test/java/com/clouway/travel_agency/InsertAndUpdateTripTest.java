@@ -46,13 +46,13 @@ public class InsertAndUpdateTripTest {
         personRepository.register(new Person("Petur", 9292929292L, 28, "semail@semail.com"));
        }
 
-    @Test
-    public void happyPath() {
-
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void deleteTrip() {
         tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         tripRepository.deleteTripByEGN(9090909090L);
         List<Trip> trips = tripRepository.getAll();
-        assertThat(trips.size(), is(equalTo(0)));
+
+        trips.get(0);
     }
 
     @Test
@@ -63,13 +63,5 @@ public class InsertAndUpdateTripTest {
         List<Trip> trips = tripRepository.getAll();
         Trip actual = trips.get(0);
         assertThat(actual.equals(expected), is(true));
-    }
-
-    @Test
-    public void deleteTrip() {
-        tripRepository.register(new Trip(9191919191L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
-        tripRepository.deleteTripByEGN(9191919191L);
-        List<Trip> trips = tripRepository.getAll();
-        assertThat(trips.size(), is(equalTo(0)));
     }
 }

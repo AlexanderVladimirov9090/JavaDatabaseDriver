@@ -14,8 +14,10 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -59,24 +61,27 @@ public class SelectPersonTest {
 
     @Test
     public void peopleStartsWith(){
-        Person expectedFirst = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
-        List actual = personRepository.peopleStartsWith("P");
-        Person actualFirst = (Person) actual.get(0);
-        assertThat(actualFirst.equals(expectedFirst), is(true));
+        Person expected = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
+        personRepository.register(expected);
+        List<Person> people = personRepository.peopleStartsWith("P");
+        Person actual =  people.get(0);
+        assertThat(actual.equals(expected), is(true));
     }
 
 
     @Test
     public void bySameCity(){
         dataStore.update("CREATE TABLE Trip ( EGN BIGINT NOT NULL, DateOfArrival DATE NOT NULL, DateOfDeparture DATE NOT NULL, City VARCHAR(56), FOREIGN KEY (EGN) REFERENCES People(EGN))");
-        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
-        tripRepository.register(new Trip(9191919191L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
+        personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
+        personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
+        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
+        tripRepository.register(new Trip(9191919191L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
         Person expectedFirst = new Person("Gosho", 9090909090L, 23, "email@email.com");
         Person expectedSecond = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
-        List actual = personRepository.peopleInSameCity("Pleven", 1290262492000L);
-        Person actualFirst = (Person) actual.get(0);
-        Person actualSecond = (Person) actual.get(1);
-        assertThat(actualFirst.equals(expectedFirst), is(true));
-        assertThat(actualSecond.equals(expectedSecond), is(true));
-    }
+        List<Person> expected = new LinkedList<>();
+        expected.add(expectedFirst);
+        expected.add(expectedSecond);
+        List<Person> actual = personRepository.peopleInSameCity("Pleven", 1290262492000L);
+        assertThat(actual,is(equalTo(expected)));
+        }
 }

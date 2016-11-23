@@ -35,10 +35,6 @@ public class Trip {
             return false;
         }
         final Trip other = (Trip) obj;
-        System.out.println(this.egn + " " + other.egn);
-        System.out.println(this.city + " " + other.city);
-        System.out.println(this.dateOfArrival + " " + other.dateOfArrival);
-        System.out.println(this.dateOfDeparture + " " + other.dateOfDeparture);
 
         if ((this.egn == null) ? (other.egn != null) : !this.egn.equals(other.egn)) {
             return false;
