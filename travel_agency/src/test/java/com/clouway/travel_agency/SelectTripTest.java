@@ -42,9 +42,6 @@ public class SelectTripTest {
         dataStore.update("CREATE TABLE Trip ( EGN BIGINT NOT NULL, DateOfArrival DATE NOT NULL, DateOfDeparture DATE NOT NULL, City VARCHAR(56), FOREIGN KEY (EGN) REFERENCES People(EGN))");
         personRepository.register(new Person("Pesho", 9090909090L, 12, "mail.com"));
         personRepository.register(new Person("Pesho", 9292929292L, 12, "mail.com"));
-        tripRepository.register(new Trip(9292929292L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
-        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
-        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
     }
 
     public SelectTripTest() throws SQLException {
@@ -55,10 +52,15 @@ public class SelectTripTest {
         Trip expectedFirst = new Trip(9292929292L, new Date(1290262492000L), new Date(1290694492000L), "Sofia");
         Trip expectedSecond = new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven");
         Trip expectedThird = new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia");
-        List trips = tripRepository.getAll();
-        Trip actual = (Trip) trips.get(0);
-        Trip actualSecond = (Trip) trips.get(1);
-        Trip actualThird = (Trip) trips.get(2);
+
+        tripRepository.register(new Trip(9292929292L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
+        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
+        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
+
+        List<Trip> trips = tripRepository.getAll();
+        Trip actual = trips.get(0);
+        Trip actualSecond = trips.get(1);
+        Trip actualThird = trips.get(2);
         assertThat(actual.equals(expectedFirst), is(true));
         assertThat(actualSecond.equals(expectedSecond), is(true));
         assertThat(actualThird.equals(expectedThird), is(true));

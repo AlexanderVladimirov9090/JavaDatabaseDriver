@@ -40,17 +40,19 @@ public class SelectPersonTest {
     public void createPeopleTableAndPopulate() {
         dataStore.update("DROP TABLE IF EXISTS Trip");
         dataStore.update("TRUNCATE TABLE People");
-        personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
-        personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
     }
 
     @Test
     public void happyPath() throws ClassNotFoundException, SQLException {
         Person expectedFirst = new Person("Gosho", 9090909090L, 23, "email@email.com");
         Person expectedSecond = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
-        List actual = personRepository.getAll();
-        Person actualFirst = (Person) actual.get(0);
-        Person actualSecond = (Person) actual.get(1);
+        personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
+        personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
+
+        List<Person> actual = personRepository.getAll();
+
+        Person actualFirst = actual.get(0);
+        Person actualSecond = actual.get(1);
         assertThat(actualFirst.equals(expectedFirst), is(true));
         assertThat(actualSecond.equals(expectedSecond), is(true));
     }

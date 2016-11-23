@@ -16,12 +16,12 @@ public class Trip {
     public final Long egn;
     public final Date dateOfArrival;
     public final Date dateOfDeparture;
-    public   final String city;
+    public final String city;
 
-    public Trip(Long egn, java.sql.Date dateOfArrival, java.sql.Date dateOfDeparture, String city) {
+    public Trip(Long egn, Date dateOfArrival, Date dateOfDeparture, String city) {
         this.egn = egn;
-        this.dateOfArrival = java.sql.Date.valueOf(dateOfArrival.toString());
-        this.dateOfDeparture = java.sql.Date.valueOf(dateOfDeparture.toString());
+        this.dateOfArrival = dateOfArrival;
+        this.dateOfDeparture = dateOfDeparture;
         this.city = city;
     }
 
@@ -36,9 +36,9 @@ public class Trip {
         }
         final Trip other = (Trip) obj;
         System.out.println(this.egn + " " + other.egn);
-        System.out.println(this.city+ " " + other.city);
-        System.out.println(this.dateOfArrival+ " " + other.dateOfArrival);
-        System.out.println(this.dateOfDeparture+ " "+ other.dateOfDeparture);
+        System.out.println(this.city + " " + other.city);
+        System.out.println(this.dateOfArrival + " " + other.dateOfArrival);
+        System.out.println(this.dateOfDeparture + " " + other.dateOfDeparture);
 
         if ((this.egn == null) ? (other.egn != null) : !this.egn.equals(other.egn)) {
             return false;

@@ -27,6 +27,7 @@ public class InsertAndUpdatePersonTest {
     private Connection connection = dataBaseConnectionRule.connection;
     private PersonRepository personRepository = new PersistencePersonRepository(connection);
     private DataStore dataStore = new DataStore(connection);
+
     public InsertAndUpdatePersonTest() throws SQLException {
     }
 
@@ -34,24 +35,28 @@ public class InsertAndUpdatePersonTest {
     public void createAndPopulate() {
         dataStore.update("DROP TABLE IF EXISTS Trip");
         dataStore.update("TRUNCATE TABLE People");
-
-        personRepository.register(new Person("Gogo", 3333333333L, 13, "no0"));
-        personRepository.register(new Person("Delete", 1111111111L, 44, "d"));
     }
 
     @Test
     public void addPerson() {
-        Person expected = new Person("Ivan", 1212121212L, 15, "food@email.com");
+        Person expectedFirst = new Person("Ivan", 1212121212L, 15, "food@email.com");
+        Person expectedSecond = new Person("NewPerson", 5656565656L, 15, "food@email.com");
         personRepository.register(new Person("Ivan", 1212121212L, 15, "food@email.com"));
-        List actual = personRepository.getAll();
-        Person actualPerson = (Person) actual.get(1);
-        assertThat(actualPerson.equals(expected), is(true));
+        personRepository.register(new Person("NewPerson", 5656565656L, 15, "food@email.com"));
+        List<Person> people = personRepository.getAll();
+
+        Person actualFirst = people.get(0);
+        Person actualSecond = people.get(0);
+
+        assertThat(actualFirst.equals(expectedFirst), is(true));
+        assertThat(actualSecond.equals(expectedSecond), is(true));
     }
 
     @Test
     public void updatePerson() {
+        personRepository.register(new Person("Gogo", 3333333333L, 13, "no0"));
         Person updatedPerson = new Person("Zozo", 3333333333L, 99, "yes");
-        personRepository.updatePerson(new Person("Zozo", 3333333333L, 99, "yes"));
+        personRepository.update(new Person("Zozo", 3333333333L, 99, "yes"));
         List actual = personRepository.peopleStartsWith("Zozo");
         Person actualPerson = (Person) actual.get(0);
         assertThat(actualPerson.equals(updatedPerson), is(true));

@@ -47,7 +47,7 @@ public interface PersonRepository {
      *
      * @param person new updated version of person that is going to be updated.
      */
-    void updatePerson(Person person);
+    void update(Person person);
 
     /**
      * Deletes person by EGN.

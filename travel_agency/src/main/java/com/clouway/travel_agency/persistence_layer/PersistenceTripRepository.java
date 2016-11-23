@@ -28,7 +28,10 @@ public class PersistenceTripRepository implements TripRepository {
      */
     @Override
     public List<Trip> getAll() {
-        return dataStore.fetchRows("SELECT * FROM Trip", resultSet -> new Trip(resultSet.getLong(1), resultSet.getDate(2), resultSet.getDate(3), resultSet.getString(4)));
+        return dataStore.fetchRows("SELECT * FROM Trip", resultSet -> new Trip(resultSet.getLong(1),
+                java.sql.Date.valueOf(resultSet.getDate(2).toString()),
+                java.sql.Date.valueOf(resultSet.getDate(3).toString()),
+                resultSet.getString(4)));
     }
 
 

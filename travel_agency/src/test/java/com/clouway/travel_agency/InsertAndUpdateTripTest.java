@@ -44,10 +44,7 @@ public class InsertAndUpdateTripTest {
         personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
         personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
         personRepository.register(new Person("Petur", 9292929292L, 28, "semail@semail.com"));
-        tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
-        tripRepository.register(new Trip(9191919191L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
-        tripRepository.register(new Trip(9292929292L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
-    }
+       }
 
     @Test
     public void happyPath() {
@@ -55,11 +52,12 @@ public class InsertAndUpdateTripTest {
         tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         tripRepository.deleteTripByEGN(9090909090L);
         List<Trip> trips = tripRepository.getAll();
-        assertThat(trips.size(), is(equalTo(2)));
+        assertThat(trips.size(), is(equalTo(0)));
     }
 
     @Test
     public void updateTrip() {
+        tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         Trip expected = new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia");
         tripRepository.updateTrip(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia"));
         List<Trip> trips = tripRepository.getAll();
@@ -69,9 +67,9 @@ public class InsertAndUpdateTripTest {
 
     @Test
     public void deleteTrip() {
+        tripRepository.register(new Trip(9191919191L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         tripRepository.deleteTripByEGN(9191919191L);
         List<Trip> trips = tripRepository.getAll();
-        assertThat(trips.size(), is(equalTo(2)));
+        assertThat(trips.size(), is(equalTo(0)));
     }
-
 }

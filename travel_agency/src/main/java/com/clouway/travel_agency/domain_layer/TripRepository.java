@@ -1,6 +1,5 @@
 package com.clouway.travel_agency.domain_layer;
 
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -42,6 +41,7 @@ public interface TripRepository {
 
     /**
      * Gets name of cities sorted  ascending by visits.
+     *
      * @return list of Sorted names of cities.
      */
     List citiesByVisit();

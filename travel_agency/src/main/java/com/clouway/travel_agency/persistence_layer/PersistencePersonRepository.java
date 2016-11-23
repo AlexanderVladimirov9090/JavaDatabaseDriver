@@ -73,7 +73,7 @@ public class PersistencePersonRepository implements PersonRepository {
      * @param person new person with changes for existing person in database.
      */
     @Override
-    public void updatePerson(Person person) {
+    public void update(Person person) {
         dataStore.update("UPDATE People SET Name = ?, AGE = ?, Email = ? WHERE EGN = ?", person.name, person.age, person.email, person.egn);
     }
 
