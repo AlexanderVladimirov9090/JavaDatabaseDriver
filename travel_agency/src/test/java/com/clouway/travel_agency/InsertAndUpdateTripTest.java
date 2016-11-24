@@ -12,6 +12,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class InsertAndUpdateTripTest {
 
     @Test
     public void updateTrip() {
+        System.out.println(new Date(1290262492000L));
         tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         Trip expected = new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia");
         tripRepository.updateTrip(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia"));

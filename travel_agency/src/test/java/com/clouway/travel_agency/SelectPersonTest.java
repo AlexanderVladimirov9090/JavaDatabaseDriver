@@ -81,7 +81,7 @@ public class SelectPersonTest {
         List<Person> expected = new LinkedList<>();
         expected.add(expectedFirst);
         expected.add(expectedSecond);
-        List<Person> actual = personRepository.peopleInSameCity("Pleven", 1290262492000L);
+        List<Person> actual = personRepository.peopleInSameCity("Sofia", new Date(1290262492000L));
         assertThat(actual,is(equalTo(expected)));
         }
 }

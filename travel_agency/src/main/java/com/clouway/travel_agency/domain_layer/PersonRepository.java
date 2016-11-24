@@ -1,5 +1,7 @@
 package com.clouway.travel_agency.domain_layer;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -33,7 +35,7 @@ public interface PersonRepository {
      * @param date Arrived date of person.
      * @return people that are in the same city.
      */
-    List<Person> peopleInSameCity(String city, Long date);
+    List<Person> peopleInSameCity(String city, Date date);
 
     /**
      * Register person to database.

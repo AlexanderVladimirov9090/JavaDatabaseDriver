@@ -52,7 +52,7 @@ public class PersistencePersonRepository implements PersonRepository {
      * @return people that are in the same city.
      */
     @Override
-    public List<Person> peopleInSameCity(String city, Long date) {
+    public List<Person> peopleInSameCity(String city, Date date) {
      return    dataStore.fetchRows("SELECT * FROM People INNER JOIN Trip ON People.EGN=Trip.EGN WHERE Trip.City = ? AND Trip.DateOfArrival <= ? AND ? < Trip.DateOfDeparture"
              , resultSet -> new Person(resultSet.getString(1),resultSet.getLong(2),resultSet.getInt(3),resultSet.getString(4)), city, date, date);
     }
