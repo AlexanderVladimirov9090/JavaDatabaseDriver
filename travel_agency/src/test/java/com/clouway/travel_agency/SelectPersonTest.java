@@ -63,7 +63,7 @@ public class SelectPersonTest {
     public void peopleStartsWith(){
         Person expected = new Person("Pesho", 9191919191L, 27, "gemail@gemail.com");
         personRepository.register(expected);
-        List<Person> people = personRepository.peopleStartsWith("P");
+        List<Person> people = personRepository.startsWith("P");
         Person actual =  people.get(0);
         assertThat(actual.equals(expected), is(true));
     }
@@ -81,7 +81,7 @@ public class SelectPersonTest {
         List<Person> expected = new LinkedList<>();
         expected.add(expectedFirst);
         expected.add(expectedSecond);
-        List<Person> actual = personRepository.peopleInSameCity("Sofia", new Date(1290262492000L));
+        List<Person> actual = personRepository.inSameCity("Sofia", new Date(1290262492000L));
         assertThat(actual,is(equalTo(expected)));
         }
 }

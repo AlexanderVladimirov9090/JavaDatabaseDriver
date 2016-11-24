@@ -26,7 +26,7 @@ public interface PersonRepository {
      * @param startsWith starting pattern.
      * @return
      */
-    List<Person> peopleStartsWith(String startsWith);
+    List<Person> startsWith(String startsWith);
 
     /**
      * Gets people by the city that they are from Arrived Date.
@@ -35,7 +35,7 @@ public interface PersonRepository {
      * @param date Arrived date of person.
      * @return people that are in the same city.
      */
-    List<Person> peopleInSameCity(String city, Date date);
+    List<Person> inSameCity(String city, Date date);
 
     /**
      * Register person to database.
@@ -56,5 +56,5 @@ public interface PersonRepository {
      *
      * @param egn given egn.
      */
-    void deletePersonByEGN(Long egn);
+    void deleteByEGN(Long egn);
 }

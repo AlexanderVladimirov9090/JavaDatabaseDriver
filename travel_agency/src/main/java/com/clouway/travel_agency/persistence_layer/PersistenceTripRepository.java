@@ -61,7 +61,7 @@ public class PersistenceTripRepository implements TripRepository {
      * @param egn given for the delete.
      */
     @Override
-    public void deleteTripByEGN(Long egn) {
+    public void delete(Long egn) {
         dataStore.update("DELETE FROM Trip WHERE EGN = ?", egn);
     }
 

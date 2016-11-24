@@ -16,7 +16,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -50,7 +49,7 @@ public class InsertAndUpdateTripTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void deleteTrip() {
         tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
-        tripRepository.deleteTripByEGN(9090909090L);
+        tripRepository.delete(9090909090L);
         List<Trip> trips = tripRepository.getAll();
 
         trips.get(0);

@@ -37,7 +37,7 @@ public interface TripRepository {
      *
      * @param egn given for the delete.
      */
-    void deleteTripByEGN(Long egn);
+    void delete(Long egn);
 
     /**
      * Gets name of cities sorted  ascending by visits.

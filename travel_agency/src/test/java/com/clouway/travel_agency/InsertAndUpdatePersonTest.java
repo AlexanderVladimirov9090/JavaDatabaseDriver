@@ -69,15 +69,15 @@ public class InsertAndUpdatePersonTest {
         personRepository.register(new Person("Gogo", 3333333333L, 13, "no0"));
         Person updatedPerson = new Person("Zozo", 3333333333L, 99, "yes");
         personRepository.update(new Person("Zozo", 3333333333L, 99, "yes"));
-        List actual = personRepository.peopleStartsWith("Zozo");
+        List actual = personRepository.startsWith("Zozo");
         Person actualPerson = (Person) actual.get(0);
         assertThat(actualPerson.equals(updatedPerson), is(true));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void deletePerson() {
-        personRepository.deletePersonByEGN(1111111111L);
-        List actual = personRepository.peopleStartsWith("Delete");
+        personRepository.deleteByEGN(1111111111L);
+        List actual = personRepository.startsWith("Delete");
         actual.get(0);
     }
 }

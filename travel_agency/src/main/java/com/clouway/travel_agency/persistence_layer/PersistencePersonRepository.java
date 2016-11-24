@@ -39,7 +39,7 @@ public class PersistencePersonRepository implements PersonRepository {
      * @return
      */
     @Override
-    public List<Person> peopleStartsWith(String startsWith) {
+    public List<Person> startsWith(String startsWith) {
         return dataStore.fetchRows("SELECT * FROM People WHERE Name LIKE ?",
                 resultSet -> new Person(resultSet.getString(1), resultSet.getLong(2), resultSet.getInt(3), resultSet.getString(4)), startsWith + "%");
     }
@@ -52,7 +52,7 @@ public class PersistencePersonRepository implements PersonRepository {
      * @return people that are in the same city.
      */
     @Override
-    public List<Person> peopleInSameCity(String city, Date date) {
+    public List<Person> inSameCity(String city, Date date) {
      return    dataStore.fetchRows("SELECT * FROM People INNER JOIN Trip ON People.EGN=Trip.EGN WHERE Trip.City = ? AND Trip.DateOfArrival <= ? AND ? < Trip.DateOfDeparture"
              , resultSet -> new Person(resultSet.getString(1),resultSet.getLong(2),resultSet.getInt(3),resultSet.getString(4)), city, date, date);
     }
@@ -83,7 +83,7 @@ public class PersistencePersonRepository implements PersonRepository {
      * @param egn given egn.
      */
     @Override
-    public void deletePersonByEGN(Long egn) {
+    public void deleteByEGN(Long egn) {
         dataStore.update("DELETE FROM People WHERE EGN = ?", egn);
     }
 }
