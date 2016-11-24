@@ -40,8 +40,10 @@ public class SelectPersonTest {
 
     @Before
     public void createPeopleTableAndPopulate() {
-        dataStore.update("DROP TABLE IF EXISTS Trip");
+        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
+        dataStore.update("TRUNCATE TABLE Trip");
         dataStore.update("TRUNCATE TABLE People");
+        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
     }
 
     @Test
@@ -71,7 +73,6 @@ public class SelectPersonTest {
 
     @Test
     public void bySameCity(){
-        dataStore.update("CREATE TABLE Trip ( EGN BIGINT NOT NULL, DateOfArrival DATE NOT NULL, DateOfDeparture DATE NOT NULL, City VARCHAR(56), FOREIGN KEY (EGN) REFERENCES People(EGN))");
         personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
         personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
         tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));

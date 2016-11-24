@@ -35,8 +35,10 @@ public class InsertAndUpdatePersonTest {
 
     @Before
     public void createAndPopulate() {
-        dataStore.update("DROP TABLE IF EXISTS Trip");
+        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
+        dataStore.update("TRUNCATE TABLE Trip");
         dataStore.update("TRUNCATE TABLE People");
+        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
     }
 
     @Test

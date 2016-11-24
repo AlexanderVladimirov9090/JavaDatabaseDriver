@@ -36,10 +36,10 @@ public class SelectTripTest {
 
     @Before
     public void setup() {
-        dataStore.update("DROP TABLE IF EXISTS Trip");
-        dataStore.update("DROP TABLE IF EXISTS People");
-        dataStore.update("CREATE TABLE People ( Name VARCHAR(255), EGN BIGINT NOT NULL, AGE INT NOT NULL, Email VARCHAR(255), PRIMARY KEY (EGN))");
-        dataStore.update("CREATE TABLE Trip ( EGN BIGINT NOT NULL, DateOfArrival DATE NOT NULL, DateOfDeparture DATE NOT NULL, City VARCHAR(56), FOREIGN KEY (EGN) REFERENCES People(EGN))");
+        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
+        dataStore.update("TRUNCATE TABLE Trip");
+        dataStore.update("TRUNCATE TABLE People");
+        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
         personRepository.register(new Person("Pesho", 9090909090L, 12, "mail.com"));
         personRepository.register(new Person("Pesho", 9292929292L, 12, "mail.com"));
     }
