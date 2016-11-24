@@ -33,17 +33,8 @@ public class InsertAndUpdatePersonTest {
     }});
     private Connection connection = dataBaseConnectionRule.connection;
     private PersonRepository personRepository = new PersistencePersonRepository(connection);
-    private DataStore dataStore = new DataStore(connection);
 
     public InsertAndUpdatePersonTest() throws SQLException {
-    }
-
-    @Before
-    public void createAndPopulate() {
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
-        dataStore.update("TRUNCATE TABLE Trip");
-        dataStore.update("TRUNCATE TABLE People");
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
     }
 
     @Test

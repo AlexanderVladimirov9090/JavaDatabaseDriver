@@ -28,11 +28,11 @@ public class DatabaseTableRule implements TestRule {
             @Override
             public void evaluate() throws Throwable {
                 dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
+
                 for (String each : tablesName) {
                     dataStore.update("TRUNCATE TABLE "+ each);
                 }
                 dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
-                base.evaluate();
             }
         };
     }
