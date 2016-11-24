@@ -26,6 +26,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class InsertAndUpdatePersonTest {
     @Rule
     public DataBaseConnectionRule dataBaseConnectionRule = new DataBaseConnectionRule();
+    @Rule
+    public DatabaseTableRule databaseTableRule = new DatabaseTableRule(new DataStore(dataBaseConnectionRule.connection), new LinkedList<String>() {{
+        add("Trip");
+        add("People");
+    }});
     private Connection connection = dataBaseConnectionRule.connection;
     private PersonRepository personRepository = new PersistencePersonRepository(connection);
     private DataStore dataStore = new DataStore(connection);

@@ -14,6 +14,7 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -29,26 +30,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class SelectTripTest {
     @Rule
     public DataBaseConnectionRule dataBaseConnectionRule = new DataBaseConnectionRule();
+    @Rule
+    public DatabaseTableRule databaseTableRule = new DatabaseTableRule(new DataStore(dataBaseConnectionRule.connection), new LinkedList<String>(){{add("Trip");add("People");}});
     private Connection connection = dataBaseConnectionRule.connection;
     private TripRepository tripRepository = new PersistenceTripRepository(connection);
     private PersonRepository personRepository = new PersistencePersonRepository(connection);
-    private DataStore dataStore = new DataStore(connection);
-
-    @Before
-    public void setup() {
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
-        dataStore.update("TRUNCATE TABLE Trip");
-        dataStore.update("TRUNCATE TABLE People");
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
-        personRepository.register(new Person("Pesho", 9090909090L, 12, "mail.com"));
-        personRepository.register(new Person("Pesho", 9292929292L, 12, "mail.com"));
-    }
 
     public SelectTripTest() throws SQLException {
     }
 
     @Test
     public void happyPath() {
+        personRepository.register(new Person("Pesho", 9090909090L, 12, "mail.com"));
+        personRepository.register(new Person("Pesho", 9292929292L, 12, "mail.com"));
+
         Trip expectedFirst = new Trip(9292929292L, new Date(1290262492000L), new Date(1290694492000L), "Sofia");
         Trip expectedSecond = new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven");
         Trip expectedThird = new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia");
@@ -68,6 +63,13 @@ public class SelectTripTest {
 
     @Test
     public void getCitiesByOrder() {
+        personRepository.register(new Person("Pesho", 9090909090L, 12, "mail.com"));
+        personRepository.register(new Person("Pesho", 9292929292L, 12, "mail.com"));
+
+        tripRepository.register(new Trip(9292929292L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
+        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Pleven"));
+        tripRepository.register(new Trip(9090909090L, new Date(1290262492000L), new Date(1290694492000L), "Sofia"));
+
         String expectedFirst = "Sofia";
         String expectedSecond = "Pleven";
         List<String> cities = tripRepository.citiesByVisit();

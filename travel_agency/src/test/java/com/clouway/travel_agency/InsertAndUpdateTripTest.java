@@ -7,13 +7,12 @@ import com.clouway.travel_agency.domain_layer.TripRepository;
 import com.clouway.travel_agency.persistence_layer.DataStore;
 import com.clouway.travel_agency.persistence_layer.PersistencePersonRepository;
 import com.clouway.travel_agency.persistence_layer.PersistenceTripRepository;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -28,25 +27,24 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class InsertAndUpdateTripTest {
     @Rule
     public DataBaseConnectionRule dataBaseConnectionRule = new DataBaseConnectionRule();
+    @Rule
+    public DatabaseTableRule databaseTableRule = new DatabaseTableRule(new DataStore(dataBaseConnectionRule.connection), new LinkedList<String>() {{
+        add("Trip");
+        add("People");
+    }});
+
     private Connection connection = dataBaseConnectionRule.connection;
     private TripRepository tripRepository = new PersistenceTripRepository(connection);
     private PersonRepository personRepository = new PersistencePersonRepository(connection);
-    private DataStore dataStore = new DataStore(connection);
+
     public InsertAndUpdateTripTest() throws SQLException {
     }
 
-    @Before
-    public void createPeopleTableAndPopulate() {
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
-        dataStore.update("TRUNCATE TABLE Trip");
-        dataStore.update("TRUNCATE TABLE People");
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");  personRepository.register(new Person("Gosho", 9090909090L, 23, "email@email.com"));
-        personRepository.register(new Person("Pesho", 9191919191L, 27, "gemail@gemail.com"));
-        personRepository.register(new Person("Petur", 9292929292L, 28, "semail@semail.com"));
-       }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void deleteTrip() {
+        personRepository.register(new Person("Pesho", 9090909090L, 27, "gemail@gemail.com"));
+        personRepository.register(new Person("Petur", 9292929292L, 28, "semail@semail.com"));
         tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         tripRepository.delete(9090909090L);
         List<Trip> trips = tripRepository.getAll();
@@ -56,7 +54,8 @@ public class InsertAndUpdateTripTest {
 
     @Test
     public void updateTrip() {
-        System.out.println(new Date(1290262492000L));
+        personRepository.register(new Person("Pesho", 9090909090L, 27, "gemail@gemail.com"));
+        personRepository.register(new Person("Petur", 9292929292L, 28, "semail@semail.com"));
         tripRepository.register(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Pleven"));
         Trip expected = new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia");
         tripRepository.updateTrip(new Trip(9090909090L, new java.sql.Date(1290262492000L), new java.sql.Date(1290694492000L), "Sofia"));

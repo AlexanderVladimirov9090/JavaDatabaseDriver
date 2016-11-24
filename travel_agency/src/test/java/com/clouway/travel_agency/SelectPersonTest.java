@@ -30,20 +30,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class SelectPersonTest {
     @Rule
     public DataBaseConnectionRule dataBaseConnectionRule = new DataBaseConnectionRule();
+    @Rule
+    public DatabaseTableRule databaseTableRule = new DatabaseTableRule(new DataStore(dataBaseConnectionRule.connection), new LinkedList<String>(){{add("Trip");add("People");}});
     private Connection connection = dataBaseConnectionRule.connection;
     private PersonRepository personRepository = new PersistencePersonRepository(connection);
     private TripRepository tripRepository = new PersistenceTripRepository(connection);
-    private DataStore dataStore = new DataStore(connection);
 
     public SelectPersonTest() throws SQLException {
-    }
-
-    @Before
-    public void createPeopleTableAndPopulate() {
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 0");
-        dataStore.update("TRUNCATE TABLE Trip");
-        dataStore.update("TRUNCATE TABLE People");
-        dataStore.update("SET FOREIGN_KEY_CHECKS = 1");
     }
 
     @Test
