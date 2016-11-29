@@ -1,4 +1,4 @@
-package alexander.magazin.persistence_layer;
+package alexander.magazine.persistence_layer;
 
 import alexander.magazine.domain_layer.Article;
 import alexander.magazine.domain_layer.ArticleHistory;
@@ -13,22 +13,24 @@ import java.util.List;
  * @author Alexander Vladimirov
  *         <alexandervladimirov1902@gmail.com>
  */
-public class PresistenceArticleRepository implements ArticleRepository {
+public class PersistenceArticleRepository implements ArticleRepository {
     private final DataStore dataStore;
 
-    public PresistenceArticleRepository(Connection connection) {
+    public PersistenceArticleRepository(Connection connection) {
         this.dataStore = new DataStore(connection);
     }
 
     @Override
     public List<Article> all() {
-        return dataStore.fetchRows("SELECT * FROM article", resultSet -> new Article(
-                resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
+        return dataStore.fetchRows("SELECT * FROM article",
+                resultSet -> new Article(
+                        resultSet.getInt(1), resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4)));
     }
 
     @Override
     public void register(Article article) {
-        dataStore.update("INSERT INTO article VALUES(?,?,?,?)", article.id, article.title, article.body, article.authorName);
+        dataStore.update("INSERT DELAYED INTO article VALUES(?,?,?,?)", article.id, article.title, article.body, article.authorName);
     }
 
     @Override
@@ -45,8 +47,8 @@ public class PresistenceArticleRepository implements ArticleRepository {
     public List<ArticleHistory> history(Integer offset, Integer limit) {
 
         return dataStore.fetchRows("SELECT * FROM article_history LIMIT ? OFFSET ?",
-                resultSet -> new ArticleHistory(resultSet.getInt(1),
-                        resultSet.getInt(2), resultSet.getString(3),
+                resultSet -> new ArticleHistory(
+                        resultSet.getInt(1), resultSet.getInt(2), resultSet.getString(3),
                         resultSet.getString(4), resultSet.getString(5)), limit, offset);
     }
 }

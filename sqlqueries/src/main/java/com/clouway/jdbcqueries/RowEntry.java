@@ -1,4 +1,4 @@
-package com.clouway.travel_agency.persistence_layer;
+package com.clouway.jdbcqueries;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +9,6 @@ import java.sql.SQLException;
  * @author Alexander Vladimirov
  *         <alexandervladimirov1902@gmail.com>
  */
-public interface RowFetcher<T> {
+public interface RowEntry<T> {
     T fetchRow(ResultSet resultSet) throws SQLException;
 }

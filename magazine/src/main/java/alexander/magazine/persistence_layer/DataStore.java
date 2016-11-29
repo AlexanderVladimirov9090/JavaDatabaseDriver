@@ -1,4 +1,4 @@
-package alexander.magazin.persistence_layer;
+package alexander.magazine.persistence_layer;
 
 import com.google.common.collect.Lists;
 

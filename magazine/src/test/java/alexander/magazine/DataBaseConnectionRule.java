@@ -1,4 +1,4 @@
-package com.clouway.travel_agency;
+package alexander.magazine;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

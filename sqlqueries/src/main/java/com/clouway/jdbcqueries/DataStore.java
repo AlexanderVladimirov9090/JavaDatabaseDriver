@@ -43,15 +43,15 @@ public class DataStore<T> {
      * Fetches rows(records) from database.
      *
      * @param query      that is pushed for execution.
-     * @param rowFetcher is used to provide places to store data from database to object.
+     * @param rowEntry is used to provide places to store data from database to object.
      * @return list filled with objects.
      */
-    public List<T> fetchRows(String query, RowFetcher<T> rowFetcher) {
+    public List<T> fetchRows(String query, RowEntry<T> rowEntry) {
         List list = Lists.newArrayList();
         try (PreparedStatement statement = dbConnection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                Optional possibleRow = Optional.of(rowFetcher.fetchRow(resultSet));
+                Optional possibleRow = Optional.of(rowEntry.fetchRow(resultSet));
                 list.add(possibleRow.get());
             }
         } catch (SQLException e) {
