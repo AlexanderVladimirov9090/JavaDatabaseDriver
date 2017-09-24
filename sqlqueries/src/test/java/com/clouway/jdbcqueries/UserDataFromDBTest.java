@@ -23,8 +23,9 @@ public class UserDataFromDBTest {
     public UserDataFromDBTest() throws SQLException {
     }
     Connection connection = databaseConnectionRule.connection;
+
     @Test
-    public void getFirstUser() throws NoConnectionException {
+    public void getFirstUser() throws InconsistentConnectionException {
         User expected = new User(1, "Root", "password", "emai@email.com");
         DataStore userDataStore = new DataStore(connection);
         List actual = userDataStore.fetchRows("SELECT * FROM  users", resultSet -> {
@@ -40,7 +41,7 @@ public class UserDataFromDBTest {
     }
 
     @Test
-    public void getSecondUser() throws NoConnectionException {
+    public void getSecondUser() throws InconsistentConnectionException {
         User expected = new User(2, "user", "password", "emai@email.com");
         DataStore userDataStore = new DataStore(connection);
         List actual = userDataStore.fetchRows("SELECT * FROM  users", resultSet -> {

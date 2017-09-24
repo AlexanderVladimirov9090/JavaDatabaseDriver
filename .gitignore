@@ -36,3 +36,8 @@ hs_err_pid*
 /user_registraion_center/.gradle/
 /user_registraion_center/gradlew.bat
 /user_registraion_center/gradlew
+/sqlqueries/.gradle
+/sqlqueries/.idea
+/sqlqueries/gradle
+/sqlqueries/gradlew
+/sqlqueries/gradlew.bat

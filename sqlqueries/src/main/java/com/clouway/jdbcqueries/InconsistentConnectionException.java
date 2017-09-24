@@ -6,8 +6,8 @@ package com.clouway.jdbcqueries;
  * @author Alexander Vladimirov
  *         <alexandervladimirov1902@gmail.com>
  */
-public class NoConnectionException extends RuntimeException {
-    public NoConnectionException(String message) {
+public class InconsistentConnectionException extends RuntimeException {
+    public InconsistentConnectionException(String message) {
         super(message);
     }
 }

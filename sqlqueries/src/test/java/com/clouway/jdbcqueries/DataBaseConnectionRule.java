@@ -13,9 +13,11 @@ import java.sql.SQLException;
  *
  * @author Alexander Vladimirov
  *         <alexandervladimirov1902@gmail.com>
+ *             This class is writen for automating and reusing connection to the database when writing tests.
  */
 public class DataBaseConnectionRule implements TestRule {
-    public   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/jdbc_database", "root", "123123");;
+
+    public   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/jdbc_database", "root", "123123");
 
     public DataBaseConnectionRule() throws SQLException {
     }
@@ -32,6 +34,9 @@ public class DataBaseConnectionRule implements TestRule {
         };
     }
 
+    /**
+     * This method is used to close connection to the database.
+     */
     private void closeConnection(){
         try {
             this.connection.close();

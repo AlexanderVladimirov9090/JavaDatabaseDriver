@@ -14,7 +14,10 @@ import java.util.Optional;
  *
  * @author Alexander Vladimirov
  *         <alexandervladimirov1902@gmail.com>
- *         This class provides methods for executing queries for sql databases.
+ *
+ *        This is driver write for databases.
+ *        The class uses two public method for updating to database and fetching from database.
+ *        One priveta method for filling up statement.
  */
 public class DataStore<T> {
     private final Connection dbConnection;
@@ -24,10 +27,10 @@ public class DataStore<T> {
     }
 
     /**
-     * Executes change queries.
+     * Executes change to the table in database.
      *
-     * @param query   that is pushed for execution.
-     * @param objects if needed to push record to database or make table.
+     * @param query   executed query to the database.
+     * @param objects used when update, write or remove record from database.
      */
     public void update(String query, Object... objects) {
 
@@ -63,9 +66,9 @@ public class DataStore<T> {
     /**
      * Fills statement for query
      *
-     * @param statement
-     * @param objects
-     * @throws SQLException
+     * @param statement statement that is going to be filled.
+     * @param objects given object to fill statement.
+     * @throws SQLException is thrown by statement.
      */
     private void fillStatement(PreparedStatement statement, Object... objects) throws SQLException {
         for (int i = 0; i < objects.length; i++) {
