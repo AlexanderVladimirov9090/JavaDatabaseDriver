@@ -1,4 +1,4 @@
-package com.clouway.jdbcqueries;
+package com.gmail.alexander.vladimirov1902;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

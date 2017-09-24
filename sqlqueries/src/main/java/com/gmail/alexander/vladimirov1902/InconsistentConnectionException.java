@@ -1,4 +1,4 @@
-package com.clouway.jdbcqueries;
+package com.gmail.alexander.vladimirov1902;
 
 /**
  * Created by clouway on 26.10.16.

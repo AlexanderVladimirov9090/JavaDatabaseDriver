@@ -1,4 +1,4 @@
-package com.clouway.jdbcqueries;
+package com.gmail.alexander.vladimirov1902;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
