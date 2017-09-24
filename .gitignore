@@ -41,3 +41,8 @@ hs_err_pid*
 /sqlqueries/gradle
 /sqlqueries/gradlew
 /sqlqueries/gradlew.bat
+/magazine/.gradle
+/magazine/.idea
+/magazine/gradle
+/magazine/gradlew
+/magazine/gradlew.bat

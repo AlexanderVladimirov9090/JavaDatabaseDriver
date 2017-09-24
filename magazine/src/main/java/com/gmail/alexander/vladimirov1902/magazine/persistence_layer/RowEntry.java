@@ -1,4 +1,4 @@
-package alexander.magazine.persistence_layer;
+package com.gmail.alexander.vladimirov1902.magazine.persistence_layer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

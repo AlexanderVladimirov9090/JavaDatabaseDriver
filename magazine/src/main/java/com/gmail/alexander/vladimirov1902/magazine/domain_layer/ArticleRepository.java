@@ -1,4 +1,4 @@
-package alexander.magazine.domain_layer;
+package com.gmail.alexander.vladimirov1902.magazine.domain_layer;
 
 import java.util.List;
 

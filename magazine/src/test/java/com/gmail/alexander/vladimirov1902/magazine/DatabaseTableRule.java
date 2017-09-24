@@ -1,6 +1,6 @@
-package alexander.magazine;
+package com.gmail.alexander.vladimirov1902.magazine;
 
-import alexander.magazine.persistence_layer.DataStore;
+import com.gmail.alexander.vladimirov1902.magazine.persistence_layer.DataStore;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;

@@ -1,9 +1,9 @@
-package alexander.magazine;
+package com.gmail.alexander.vladimirov1902.magazine;
 
-import alexander.magazine.domain_layer.Article;
-import alexander.magazine.domain_layer.ArticleRepository;
-import alexander.magazine.persistence_layer.DataStore;
-import alexander.magazine.persistence_layer.PersistenceArticleRepository;
+import com.gmail.alexander.vladimirov1902.magazine.domain_layer.Article;
+import com.gmail.alexander.vladimirov1902.magazine.domain_layer.ArticleRepository;
+import com.gmail.alexander.vladimirov1902.magazine.persistence_layer.DataStore;
+import com.gmail.alexander.vladimirov1902.magazine.persistence_layer.PersistenceArticleRepository;
 import org.junit.Rule;
 import org.junit.Test;
 

@@ -1,8 +1,8 @@
-package alexander.magazine.persistence_layer;
+package com.gmail.alexander.vladimirov1902.magazine.persistence_layer;
 
-import alexander.magazine.domain_layer.Article;
-import alexander.magazine.domain_layer.ArticleHistory;
-import alexander.magazine.domain_layer.ArticleRepository;
+import com.gmail.alexander.vladimirov1902.magazine.domain_layer.Article;
+import com.gmail.alexander.vladimirov1902.magazine.domain_layer.ArticleHistory;
+import com.gmail.alexander.vladimirov1902.magazine.domain_layer.ArticleRepository;
 
 import java.sql.Connection;
 import java.util.List;

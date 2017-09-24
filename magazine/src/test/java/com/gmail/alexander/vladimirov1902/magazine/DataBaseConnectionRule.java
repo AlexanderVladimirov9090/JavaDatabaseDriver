@@ -1,4 +1,4 @@
-package alexander.magazine;
+package com.gmail.alexander.vladimirov1902.magazine;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
