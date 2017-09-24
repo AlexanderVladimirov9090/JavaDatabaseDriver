@@ -1,4 +1,4 @@
-package vladimirov.alexander.registration_system.persistence_layer;
+package com.gmail.alexander.vladimirov1902.registration_system.persistence_layer;
 
 import com.google.common.collect.Lists;
 

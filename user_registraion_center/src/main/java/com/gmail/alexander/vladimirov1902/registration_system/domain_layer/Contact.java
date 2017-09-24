@@ -1,4 +1,4 @@
-package vladimirov.alexander.registration_system.domain_layer;
+package com.gmail.alexander.vladimirov1902.registration_system.domain_layer;
 
 /**
  * Created by zumba on 29.11.16.

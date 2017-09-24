@@ -1,4 +1,4 @@
-package vladimirov.alexander.registration_system.domain_layer;
+package com.gmail.alexander.vladimirov1902.registration_system.domain_layer;
 
 import java.util.List;
 

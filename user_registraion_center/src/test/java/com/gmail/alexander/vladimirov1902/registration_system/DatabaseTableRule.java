@@ -1,9 +1,9 @@
-package vladimirov.alexander.registration_system;
+package com.gmail.alexander.vladimirov1902.registration_system;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-import vladimirov.alexander.registration_system.persistence_layer.DataStore;
+import com.gmail.alexander.vladimirov1902.registration_system.persistence_layer.DataStore;
 
 import java.util.List;
 

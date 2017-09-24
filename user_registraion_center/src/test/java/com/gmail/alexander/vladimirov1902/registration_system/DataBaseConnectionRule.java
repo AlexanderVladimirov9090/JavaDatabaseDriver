@@ -1,4 +1,4 @@
-package vladimirov.alexander.registration_system;
+package com.gmail.alexander.vladimirov1902.registration_system;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

@@ -1,12 +1,12 @@
-package vladimirov.alexander.registration_system;
+package com.gmail.alexander.vladimirov1902.registration_system;
 
+import com.gmail.alexander.vladimirov1902.registration_system.domain_layer.User;
+import com.gmail.alexander.vladimirov1902.registration_system.domain_layer.UserRepository;
+import com.gmail.alexander.vladimirov1902.registration_system.persistence_layer.DataStore;
+import com.gmail.alexander.vladimirov1902.registration_system.persistence_layer.PersistenceUserRepository;
 import com.google.common.collect.Lists;
 import org.junit.Rule;
 import org.junit.Test;
-import vladimirov.alexander.registration_system.domain_layer.User;
-import vladimirov.alexander.registration_system.domain_layer.UserRepository;
-import vladimirov.alexander.registration_system.persistence_layer.DataStore;
-import vladimirov.alexander.registration_system.persistence_layer.PersistenceUserRepository;
 
 import java.sql.SQLException;
 import java.util.LinkedList;

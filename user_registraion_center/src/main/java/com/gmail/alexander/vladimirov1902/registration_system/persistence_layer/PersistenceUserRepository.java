@@ -1,7 +1,7 @@
-package vladimirov.alexander.registration_system.persistence_layer;
+package com.gmail.alexander.vladimirov1902.registration_system.persistence_layer;
 
-import vladimirov.alexander.registration_system.domain_layer.User;
-import vladimirov.alexander.registration_system.domain_layer.UserRepository;
+import com.gmail.alexander.vladimirov1902.registration_system.domain_layer.User;
+import com.gmail.alexander.vladimirov1902.registration_system.domain_layer.UserRepository;
 
 import java.sql.ResultSet;
 import java.util.List;
