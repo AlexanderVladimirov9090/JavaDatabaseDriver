@@ -1,10 +1,9 @@
-package com.clouway.travel_agency.persistence_layer;
+package com.gmail.alexander.vladimirov1902.travel_agency.persistence_layer;
 
-import com.clouway.travel_agency.domain_layer.Trip;
-import com.clouway.travel_agency.domain_layer.TripRepository;
+import com.gmail.alexander.vladimirov1902.travel_agency.domain_layer.Trip;
+import com.gmail.alexander.vladimirov1902.travel_agency.domain_layer.TripRepository;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.util.List;
 
 /**

@@ -1,6 +1,5 @@
-package com.clouway.travel_agency.domain_layer;
+package com.gmail.alexander.vladimirov1902.travel_agency.domain_layer;
 
-import javax.xml.crypto.Data;
 import java.sql.Date;
 import java.util.List;
 

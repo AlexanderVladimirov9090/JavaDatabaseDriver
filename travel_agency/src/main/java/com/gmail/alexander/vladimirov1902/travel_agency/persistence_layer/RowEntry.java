@@ -1,4 +1,4 @@
-package com.clouway.travel_agency.persistence_layer;
+package com.gmail.alexander.vladimirov1902.travel_agency.persistence_layer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

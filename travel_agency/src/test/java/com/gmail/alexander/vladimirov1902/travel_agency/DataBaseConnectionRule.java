@@ -1,4 +1,4 @@
-package com.clouway.travel_agency;
+package com.gmail.alexander.vladimirov1902.travel_agency;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

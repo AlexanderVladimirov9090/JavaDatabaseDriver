@@ -1,10 +1,9 @@
-package com.clouway.travel_agency;
+package com.gmail.alexander.vladimirov1902.travel_agency;
 
-import com.clouway.travel_agency.domain_layer.Person;
-import com.clouway.travel_agency.domain_layer.PersonRepository;
-import com.clouway.travel_agency.persistence_layer.DataStore;
-import com.clouway.travel_agency.persistence_layer.PersistencePersonRepository;
-import org.junit.Before;
+import com.gmail.alexander.vladimirov1902.travel_agency.domain_layer.Person;
+import com.gmail.alexander.vladimirov1902.travel_agency.domain_layer.PersonRepository;
+import com.gmail.alexander.vladimirov1902.travel_agency.persistence_layer.DataStore;
+import com.gmail.alexander.vladimirov1902.travel_agency.persistence_layer.PersistencePersonRepository;
 import org.junit.Rule;
 import org.junit.Test;
 

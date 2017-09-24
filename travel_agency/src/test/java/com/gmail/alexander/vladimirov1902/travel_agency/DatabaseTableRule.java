@@ -1,6 +1,6 @@
-package com.clouway.travel_agency;
+package com.gmail.alexander.vladimirov1902.travel_agency;
 
-import com.clouway.travel_agency.persistence_layer.DataStore;
+import com.gmail.alexander.vladimirov1902.travel_agency.persistence_layer.DataStore;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;

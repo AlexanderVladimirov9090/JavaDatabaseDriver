@@ -1,8 +1,7 @@
-package com.clouway.travel_agency.persistence_layer;
+package com.gmail.alexander.vladimirov1902.travel_agency.persistence_layer;
 
-import com.clouway.travel_agency.domain_layer.Person;
-import com.clouway.travel_agency.domain_layer.PersonRepository;
-import com.google.common.collect.Lists;
+import com.gmail.alexander.vladimirov1902.travel_agency.domain_layer.Person;
+import com.gmail.alexander.vladimirov1902.travel_agency.domain_layer.PersonRepository;
 
 import java.sql.*;
 import java.util.List;
