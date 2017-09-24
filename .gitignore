@@ -48,3 +48,13 @@ hs_err_pid*
 /magazine/gradlew.bat
 /travel_agency/.idea
 /user_registraion_center/.idea
+/user_registraion_center/.gradle
+/myjdbcstuff\user_registraion_center/.idea
+/user_registraion_center/gradle
+/user_registraion_center\gradlew
+/user_registraion_center\gradlew.bat
+.gradle
+.idea
+gradle
+gradlew
+gradlew.bat
